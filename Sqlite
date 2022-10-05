@@ -1,0 +1,43 @@
+1. SELECT id, title, body FROM post
+
+2. SELECT post.id as postId, post.title, post.body, post.userId as userId,
+user.email FROM user user
+JOIN post post
+on user.id = post.userId
+
+3. SELECT id, firstName || " " || lastName as fullName 
+FROM user
+
+4. SELECT count(*) FROM user
+
+5. SELECT count(*) FROM post
+WHERE rate>3
+
+6. SELECT max(rate) as maxRate FROM post
+
+7. SELECT avg(rate) as avgRate FROM post
+WHERE rate>2
+
+8. SELECT p.title as postTitle, p.userId as authorId, uu.email as authorEmail,
+u.firstName || " " || u.lastName as commenterFullName,
+c.id as idComment, c.text as textComment FROM comment c  
+JOIN post p
+ON p.id = c.postId
+JOIN user u
+ON u.id = c.userId 
+JOIN user uu
+ON uu.id = p.userId
+WHERE p.rate>2
+
+9. UPDATE user SET firstName = 'Hacked' 
+WHERE email LIKE '%e%'
+
+10. UPDATE post SET rate = rate+1
+WHERE title LIKE '%you%'
+AND body NOT like '%for%'
+
+11. INSERT INTO comment (postId, userId, text)
+VALUES (3, 2, 'Nixao )') 
+
+12. DELETE FROM user
+WHERE email NOT LIKE '%e%' 
